@@ -1,0 +1,41 @@
+{% extends "main.html" %}
+{% block content %}
+
+<div class="col-md-6">
+<h3>Categories</h3>
+<ul class="list-group">
+
+{% for i in categories %}
+
+<li class="list-group-item"><a href='{{url_for('item_list', name = i.name)}}'>{{i.name}}</a>
+</li>
+{% endfor %}
+</ul>
+
+{% if session['username'] %}
+<a href = '{{url_for('new_category')}}'>Create a New Category</a>
+{% endif %}
+</div>
+
+<div class="col-md-6">
+  <h3>Items in {{category.name}} ({{items|count}}
+    {% if items|count == 1 %}<span>item)</span>{% endif %}
+    {% if items|count != 1 %}<span>items)</span>{% endif %}
+  </h3>
+
+<ul class="list-group">
+
+{% for i in items %}
+
+<li class="list-group-item"><a href='{{url_for('item_detail', category_name = category.name, item_name = i.title)}}'>{{i.title}}</a>
+</li>
+{% endfor %}
+</ul>
+{% if session['username'] %}
+<a href = '{{url_for('new_item')}}'>Create a New Item</a>
+{% endif %}
+
+</div>
+
+
+{% endblock %}

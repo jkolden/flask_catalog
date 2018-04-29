@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		 <meta charset="utf-8">
+		<!--
+		<link href='http://fonts.googleapis.com/css?family=Roboto:400,300,700' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/static/styles.css">
+	-->
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="/static/styles.css">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	</head>
+	<body>
+		<div class="container">
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="background-color: #343a40!important">
+  <a class="navbar-brand" href="{{url_for('category_list')}}" style="color:white !important">Catalog App</a>
+	<div class="col-md-10 text-right login">
+		{% if session['username'] %}
+		<span style="color:gold">{{session['username']}}</span>
+		<img src="{{session['picture']}}" height=50 style="border-radius:50%; border:solid 2px white; margin:8px 10px;">
+		<a href='{{url_for('gdisconnect')}}' style="color:white">logout</a>
+		{% else %}
+		<img src="https://vignette.wikia.nocookie.net/heroes/images/f/fd/Blank_Person.png/revision/latest?cb=20090525015256" height=50 style="border-radius:50%; border:solid 2px white; margin:8px 10px;">
+		<a href="{{url_for('showLogin')}}" style="color:white;">Click Here to Log in </a>
+		{% endif %}
+	</div>
+	</nav>
+
+			{% block content %}
+			{% endblock %}
+
+		</div>
+	</body>
+</html>

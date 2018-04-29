@@ -1,0 +1,19 @@
+<!--Used for debug only. Not required for production app-->
+
+{% extends "main.html" %}
+{% block content %}
+<h1>{{category.name}}</h1>
+
+<form action="{{ url_for('category_edit', category_id = category.id)}}" method = 'post'>
+
+
+  <label for="name">Category Name</label>
+		<input type ='text' size='30' name='name' placeholder = '{{category.name }}'>
+
+
+<input type='submit' value='Submit'>
+
+
+<a href = '{{url_for('category_list')}}'> Cancel </a>
+
+{% endblock %}
